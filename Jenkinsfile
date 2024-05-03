@@ -5,26 +5,29 @@ pipeline{
   }
   stages{
 
-    stage("build jar"){
+    stage("init"){
         steps{
-          echo "building app"
-          sh "mvn package"
-        }
-    }
-    stage("build image"){
-        steps{
-          echo "building docker image"
-          withCredentials([usernamePassword(credentialsId: "dockerhub-credentials", passwordVariable: "PASS", usernameVariable:"USER")]){
-            sh 'docker build -t omarriad07/demo-app:jma-2.0 .'
-            sh 'echo $PASS | docker login -u $USER --password-stdin'
-            sh 'dokcer push omarriad07/demo-app:jma-2.0'
+          script{
+            gv = load("script.groovy")
           }
         }
     }
-    stage("deploy"){
+
+    stage("build jar"){
         steps{
-          echo "deploying app"
+          script{
+            gv.buildJar()
+          }
         }
     }
+
+    stage("build image"){
+        steps{
+          script{
+            gv.buildImage()
+          }
+        }
+    }
+    
   }
 }

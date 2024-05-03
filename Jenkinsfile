@@ -17,6 +17,8 @@ pipeline{
       when{
         expression{
           BRANCH_NAME == "main"
+           }
+      }
         steps{
           script{
             gv.buildJar()
@@ -28,6 +30,8 @@ pipeline{
       when{
         expression{
           BRANCH_NAME == "main"
+        }
+      }
         steps{
           script{
             gv.buildImage()
@@ -38,6 +42,8 @@ pipeline{
       when{
         expression{
           BRANCH_NAME == "main"
+           }
+      }
         steps{
           script{
             gv.deployApp()

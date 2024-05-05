@@ -8,6 +8,7 @@ pipeline{
     stage("init"){
         steps{
           script{
+            println("Current branch: ${env.branchName}")
             gv = load("script.groovy")
           }
         }

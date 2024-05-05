@@ -26,10 +26,12 @@ pipeline{
         }
     }
 
-    stage("build image"){
+    stage("build and push image"){
         steps{
           script{
             buildImage("omarriad07/demo-app:jma-2.0")
+            dockerLogin()
+            dockerPush("omarriad07/demo-app:jma-2.0")
           }
         }
     }

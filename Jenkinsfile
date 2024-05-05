@@ -8,7 +8,6 @@ pipeline{
     stage("init"){
         steps{
           script{
-            println("Current branch: ${env.branchName}")
             gv = load("script.groovy")
           }
         }
@@ -17,6 +16,9 @@ pipeline{
     stage("build jar"){
       when{
         expression{
+          def branchName = env.BRANCH_NAME
+          println("Current branch: ${branchName}")
+
           env.BRANCH_NAME == "main"
            }
       }

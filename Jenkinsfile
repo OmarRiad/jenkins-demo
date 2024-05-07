@@ -62,11 +62,10 @@ pipeline{
             sh 'git status'
             sh 'git branch'
             sh 'git config --list'
-            def url = "https://${USER}:${PASS}@github.com/OmarRiad/jenkins-demo.git"
-            sh "git remote set-url origin ${url}"
+            sh "git remote set-url origin https://${USER}:${PASS}@github.com/OmarRiad/jenkins-demo.git"
             sh 'git add .'
             sh 'git commit -m "ci: version bump"'
-            sh 'git push origin HEAD:main'
+            sh 'git push origin main'
           }
         }
       }

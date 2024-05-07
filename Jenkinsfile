@@ -57,6 +57,7 @@ pipeline{
           withCredentials([usernamePassword(credentialsId: "github-credentials", passwordVariable: "PASS", usernameVariable:"USER")]){
             sh 'git config --global user.email "omarriad22@gmail.com"'
             sh 'git config user.name "jenkins"'
+            echo "$USER"
             
             sh 'git status'
             sh 'git branch'

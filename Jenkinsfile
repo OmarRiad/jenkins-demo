@@ -63,7 +63,7 @@ pipeline{
             sh 'git branch'
             sh 'git config --list'
             sh "git remote rm origin"
-            sh "git remote add origin https://omarriad22@gmail.com:${GITHUB_API_TOKEN}github.com/OmarRiad/jenkins-demo.git > /dev/null 2>&1"                     
+            sh "git remote add origin https://OmarRiad:${GITHUB_API_TOKEN}github.com/OmarRiad/jenkins-demo.git"                     
 
             sh 'git add .'
             sh 'git commit -am "ci: version bump"'

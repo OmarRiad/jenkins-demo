@@ -30,7 +30,6 @@ pipeline{
     }
 
     stage("build image"){
-
         steps{
           script{
             echo "building docker image"
@@ -40,6 +39,7 @@ pipeline{
             sh "docker push omarriad07/demo-app:${IMAGE_NAME}"
           }
         }
+      }
     }
     stage("deploy"){
 
@@ -50,6 +50,6 @@ pipeline{
         }
     }
     
-  }
+  
   }
 }
